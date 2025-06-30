@@ -1,11 +1,14 @@
+import java.util.*;
+
 class Solution {
     public int removeDuplicates(int[] arr) {
-        if (arr.length == 0) return 0;
-        int k = 1;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] != arr[k - 1]) {
-                arr[k++] = arr[i];
-            }
+        Set<Integer> set = new LinkedHashSet<>();
+        for (int num : arr) {
+            set.add(num);
+        }
+        int k = 0;
+        for (int num : set) {
+            arr[k++] = num;
         }
         return k;
     }
