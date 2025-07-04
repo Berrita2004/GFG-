@@ -9,11 +9,10 @@ class Solution {
         int a = 1 ;
         int b = 1 ;
         int fib = 1 ;
-for ( int i = 3  ; i <= n ; i ++){
-       fib = a + b ;
-       a = b ;
-       b = fib ; 
-    
+for ( int i = 2 ; i < n ; i ++){
+    fib = a + b ;
+    a= b ;
+    b = fib ;
 }
 return fib ;
     }
