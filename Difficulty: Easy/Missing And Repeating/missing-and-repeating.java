@@ -1,21 +1,39 @@
 class Solution {
     ArrayList<Integer> findTwoElement(int arr[]) {
-        // code here
-        ArrayList<Integer> ans = new ArrayList<>();
-        TreeMap<Integer, Integer> m = new TreeMap<>();
-        for(int num:arr){
-            int count = m.getOrDefault(num, 0);
-            m.put(num, count+1);
+        int n = arr.length;
+        int xor = 0;
+
+        for (int i = 0; i < n; i++) {
+            xor ^= arr[i];
+            xor ^= (i + 1);
         }
-        int missing = -1, repeating = -1;
-        for(int i=1;i<=arr.length;i++){
-            int count = m.getOrDefault(i, 0);
-            if(count==0) missing = i;
-            if(count==2) repeating = i;
+
+        int num = (xor & ~(xor - 1));
+        int zero = 0, one = 0;
+
+        for (int i = 0; i < n; i++) {
+            if ((arr[i] & num) != 0) one ^= arr[i];
+            else zero ^= arr[i];
         }
-        ans.add(repeating);
-        ans.add(missing);
-      
-        return ans;
+
+        for (int i = 1; i <= n; i++) {
+            if ((i & num) != 0) one ^= i;
+            else zero ^= i;
+        }
+
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == zero) cnt++;
+        }
+
+        ArrayList<Integer> result = new ArrayList<>();
+        if (cnt == 2) {
+            result.add(zero); // duplicate
+            result.add(one);  // missing
+        } else {
+            result.add(one);  // duplicate
+            result.add(zero); // missing
+        }
+        return result;
     }
 }
