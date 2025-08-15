@@ -1,25 +1,31 @@
 class Solution {
     public int nthRoot(int n, int m) {
-        int low = 1, high = m;
-        
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            long power = powerWithOverflow(mid, n, m);
+        // recode
+        // code here
+        int low = 1 ; 
+        int high = m ; 
+        while ( low <= high){
+            int mid = (low+high)/2;
+            int power = powerOfExp( mid , n ,  m);
             
-            if (power == m) return mid;
-            else if (power < m) low = mid + 1;
-            else high = mid - 1;
+            if ( power == 1 ) return mid;
+            else if( power == 0 ){
+                low= mid+1;
+            } 
+            else {
+                high = mid-1;
+            }
+            
         }
-        
-        return -1; // floor of the root
+        return -1 ;
     }
-    
-    private long powerWithOverflow(int base, int exp, int limit) {
-        long result = 1;
-        for (int i = 0; i < exp; i++) {
-            result *= base;
-            if (result > limit) return result; // early exit to avoid overflow
+    public static int powerOfExp(int mid,int n , int m ){
+        long result = 1; 
+        for ( int i = 0 ; i < n; i ++){
+            result *= mid;
+            if (result > m) return 2; 
         }
-        return result;
+        if ( result == m) return 1;
+        return 0 ;
     }
 }
