@@ -1,10 +1,11 @@
 class Solution {
     public int aggressiveCows(int[] stalls, int k) {
         // code here
+        //important question 
         Arrays.sort(stalls);
         int n = stalls.length;
         int low = 1 ;
-        int high = stalls[n-1]- stalls[];
+        int high = stalls[n-1]- stalls[0];
         while ( low <= high){
             int mid = (low + high)/2;
             if (canPlace(stalls, mid , k)==true){
@@ -15,6 +16,7 @@ class Solution {
             }
         }
         return high ;
+        
         
     }
     public static boolean canPlace (int[] stalls , int dist , int cows){
