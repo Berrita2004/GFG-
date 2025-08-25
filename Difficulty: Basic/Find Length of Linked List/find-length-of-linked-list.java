@@ -15,5 +15,6 @@ class Solution {
             temp = temp.next;
         }
         return c;
+        
     }
 }
