@@ -1,20 +1,17 @@
 class Solution {
-    static ArrayList<Integer> leaders(int nums[]) {
+    static ArrayList<Integer> leaders(int arr[]) {
         // code here
-         int n = nums.length; 
-        int maxRight = nums[n-1]; 
-        ArrayList <Integer> p = new ArrayList <>();
-        
-        p.add(nums[n-1]);
-        for ( int i = n-2; i>=0 ; i --){
-           if ( nums[i]>=maxRight){
-               p.add(nums[i]);
-               maxRight= nums[i];
-           }
-           
-
+        ArrayList <Integer> res = new ArrayList<>();
+        int n = arr.length ;
+        res.add(arr[n-1]);
+        int max = arr[n-1];
+        for (int i = n-2 ; i >= 0 ; i--){
+            if (arr[i]>=max){
+                max= arr[i];
+                res.add(max);
+            }
         }
-           Collections.reverse(p);
-        return p;
+        Collections.reverse(res);
+        return res;
     }
 }
