@@ -19,6 +19,7 @@ class MyQueue {
         // code here
        QueueNode temp = new QueueNode(a);
         if ( front == null){
+            
             front = rear = temp;
         }
          else {
@@ -32,14 +33,12 @@ class MyQueue {
         if ( front == null) return -1;
         
            QueueNode temp = front;
+           
             front = front.next ;
             
         if (front == null) {
             rear = null;
         }
-         return temp.data;
-
-        
-        // code here
+         return temp.data; // code here
     }
 }
