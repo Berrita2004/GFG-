@@ -7,7 +7,7 @@ class Solution {
         else if (c == '+' || c == '-') return 1;
         else return -1;
     }
-    
+    // hard , this has to be hard
     public static String infixToPostfix(String s) {
         StringBuilder ans = new StringBuilder();
         Stack<Character> stack = new Stack<>();
@@ -26,7 +26,8 @@ class Solution {
                     ans.append(stack.pop());
                 }
                 if (!stack.isEmpty() && stack.peek() == '(') {
-                    stack.pop();
+                    stack.pop(); 
+                    
                 }
             }
             else { // operator
