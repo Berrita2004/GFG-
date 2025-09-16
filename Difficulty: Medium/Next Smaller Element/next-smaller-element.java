@@ -15,6 +15,7 @@ class Solution {
             }
              st.push(arr[i]);
         }
+        // ans reverse bhi karna hai !
          Collections.reverse(ans);
         return ans ;
     }
